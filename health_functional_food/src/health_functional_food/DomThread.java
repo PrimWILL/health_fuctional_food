@@ -53,10 +53,10 @@ public class DomThread extends Thread{
 
 			stm = conn.createStatement();
 			// table 생성문 보고서에 수정 필요!
-			String create = "create table Acknowledgment(BSSH_NM varchar(20), PRMS_DT integer, APLC_RAWMTRL_NM varchar(200), HF_FNCLTY_MTRAL_RCOGN_NO varchar(20), IFTKN_ATNT_MATR_CN varchar(100), INDUTY_NM varchar(15), ADDR varchar(100), FNCLTY_CN varchar(300), DAY_INTK_CN varchar(30));\r\n"
-					+ "create table Item(SKLL_IX_IRDNT_RAWMTRL varchar(30), LAST_UPDT_DTM integer, INTK_UNIT varchar(5), IFKN_ATNT_MATR_CN varchar(200), DAY_INTK_HIGHLIMIT numeric(20,4), PRDCT_NM varchar(60), CRET_DTM integer, DAY_INTK_LOWLIMIT numeric(20, 4), PRIMARY_FNCLTY varchar(100), INTK_MEMO varchar(200));\r\n"
+			String create = "create table Acknowledgment(BSSH_NM varchar(20), PRDCT_NM varchar(200), HF_FNCLTY_MTRAL_RCOGN_NO varchar(20), IFTKN_ATNT_MATR_CN varchar(100), INDUTY_NM varchar(15), ADDR varchar(100), PRIMARY_FNCLTY varchar(300), DAY_INTK_CN varchar(30));\r\n"
+					+ "create table Item(INTK_UNIT varchar(5), IFTKN_ATNT_MATR_CN varchar(200), DAY_INTK_HIGHLIMIT numeric(20,4), PRDCT_NM varchar(60), DAY_INTK_LOWLIMIT numeric(20, 4), PRIMARY_FNCLTY varchar(300), INTK_MEMO varchar(200));\r\n"
 					+ "create table Retail(PRMS_DT integer, BSSH_NM varchar(30), TELNO varchar(11), LCNS_NO bigint, PRSDNT_NM varchar(5), INDUTY_NUM varchar(11), INSTT_NM varchar(20), LOCP_ADDR varchar(100));\r\n"
-					+ "create table Gmp(APPN_DT integer, BSSH_NM varchar(30), LCNS_NO bigint, GMP_APPN_NO integer, PRSDNT_NM varchar(5), INDUTY_CD_NM varchar(11), APPN_CANCL_DT varchar(11));";
+					+ "create table Gmp(BSSH_NM varchar(30), LCNS_NO bigint, GMP_APPN_NO integer, PRSDNT_NM varchar(5), INDUTY_CD_NM varchar(11), APPN_CANCL_DT varchar(11));";
 			
 			stm.executeUpdate(create);
 			
@@ -84,9 +84,31 @@ public class DomThread extends Thread{
 			System.out.println("Gmp 끝");
 
 			System.out.println("< < Insert 완료 > >");
-			//DomThread dom = new DomThread();
-			//System.out.println("start!");
-			//dom.start();
+
+			
+			
+			
+			//// 위에까지 xml파일을 db로 불러오는 것 까지 성공
+			//// 이제 db에 있는거 search 하는것만 남음
+
+			// 넣고자 하는것을 input이라고 두고
+			String input=null;
+			
+			Search search = new Search();
+			search.factory_gmp(input, p, conn, r);
+			search.regist(input, p, conn, r);
+			search.food(input, p, conn, r);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		} catch(SQLException ex) {
 			throw ex;
 		}

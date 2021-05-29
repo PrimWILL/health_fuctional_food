@@ -19,7 +19,7 @@ public class Parsing {
 	public void Acknowledgment(NodeList list, Connection conn) {
 
 		try {
-			String sql = "insert into Acknowledgment values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into Acknowledgment values(?,?,?,?,?,?,?,?)";
 
 			for(int i = 0; i<list.getLength(); i++) {
 				System.out.println(i);
@@ -28,14 +28,13 @@ public class Parsing {
 					Element eElement = (Element)node;
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setString(1, getTagValue("BSSH_NM", eElement));
-					stmt.setInt(2, Integer.parseInt(getTagValue("PRMS_DT", eElement)));
-					stmt.setString(3, getTagValue("APLC_RAWMTRL_NM", eElement));
-					stmt.setString(4, getTagValue("HF_FNCLTY_MTRAL_RCOGN_NO", eElement));
-					stmt.setString(5, getTagValue("IFTKN_ATNT_MATR_CN", eElement));
-					stmt.setString(6, getTagValue("INDUTY_NM", eElement));
-					stmt.setString(7, getTagValue("ADDR", eElement));
-					stmt.setString(8, getTagValue("FNCLTY_CN", eElement));
-					stmt.setString(9, getTagValue("DAY_INTK_CN", eElement));
+					stmt.setString(2, getTagValue("APLC_RAWMTRL_NM", eElement));
+					stmt.setString(3, getTagValue("HF_FNCLTY_MTRAL_RCOGN_NO", eElement));
+					stmt.setString(4, getTagValue("IFTKN_ATNT_MATR_CN", eElement));
+					stmt.setString(5, getTagValue("INDUTY_NM", eElement));
+					stmt.setString(6, getTagValue("ADDR", eElement));
+					stmt.setString(7, getTagValue("FNCLTY_CN", eElement));
+					stmt.setString(8, getTagValue("DAY_INTK_CN", eElement));
 					
 					stmt.executeUpdate();
 					//System.out.println("sucess to save");
@@ -51,7 +50,7 @@ public class Parsing {
 	public void Item(NodeList list, Connection conn) {
 
 		try {
-			String sql = "insert into Item values(?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into Item values(?,?,?,?,?,?,?)";
 
 			for(int i = 0; i<list.getLength(); i++) {
 				System.out.println(i);
@@ -59,16 +58,13 @@ public class Parsing {
 				if(node.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element)node;
 					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setString(1, getTagValue("SKLL_IX_IRDNT_RAWMTRL", eElement));
-					stmt.setLong(2, Long.parseLong(getTagValue("LAST_UPDT_DTM", eElement)));
-					stmt.setString(3, getTagValue("INTK_UNIT", eElement));
-					stmt.setString(4, getTagValue("IFTKN_ATNT_MATR_CN", eElement));
-					stmt.setDouble(5, Double.parseDouble(getTagValue("DAY_INTK_HIGHLIMIT", eElement)));
-					stmt.setString(6, getTagValue("PRDCT_NM", eElement));
-					stmt.setInt(7, Integer.parseInt(getTagValue("CRET_DTM", eElement)));
-					stmt.setDouble(8, Double.parseDouble(getTagValue("DAY_INTK_LOWLIMIT", eElement)));
-					stmt.setString(9, getTagValue("PRIMARY_FNCLTY", eElement));
-					stmt.setString(10, getTagValue("INTK_MEMO", eElement));
+					stmt.setString(1, getTagValue("INTK_UNIT", eElement));
+					stmt.setString(2, getTagValue("IFTKN_ATNT_MATR_CN", eElement));
+					stmt.setDouble(3, Double.parseDouble(getTagValue("DAY_INTK_HIGHLIMIT", eElement)));
+					stmt.setString(4, getTagValue("PRDCT_NM", eElement));
+					stmt.setDouble(5, Double.parseDouble(getTagValue("DAY_INTK_LOWLIMIT", eElement)));
+					stmt.setString(6, getTagValue("PRIMARY_FNCLTY", eElement));
+					stmt.setString(7, getTagValue("INTK_MEMO", eElement));
 					
 					stmt.executeUpdate();
 					//System.out.println("sucess to save");
@@ -84,7 +80,7 @@ public class Parsing {
 	public void Gmp(NodeList list, Connection conn) {
 
 		try {
-			String sql = "insert into Gmp values(?,?,?,?,?,?,?)";
+			String sql = "insert into Gmp values(?,?,?,?,?,?)";
 
 			for(int i = 0; i<list.getLength(); i++) {
 				System.out.println(i);
@@ -92,13 +88,12 @@ public class Parsing {
 				if(node.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element)node;
 					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setInt(1, Integer.parseInt(getTagValue("APPN_DT", eElement)));
-					stmt.setString(2, getTagValue("BSSH_NM", eElement));
-					stmt.setLong(3, Long.parseLong(getTagValue("LCNS_NO", eElement)));
-					stmt.setLong(4, Integer.parseInt(getTagValue("GMP_APPN_NO", eElement)));
-					stmt.setString(5, getTagValue("PRSDNT_NM", eElement));
-					stmt.setString(6, getTagValue("INDUTY_CD_NM", eElement));
-					stmt.setString(7, getTagValue("APPN_CANCL_DT", eElement));
+					stmt.setString(1, getTagValue("BSSH_NM", eElement));
+					stmt.setLong(2, Long.parseLong(getTagValue("LCNS_NO", eElement)));
+					stmt.setLong(3, Integer.parseInt(getTagValue("GMP_APPN_NO", eElement)));
+					stmt.setString(4, getTagValue("PRSDNT_NM", eElement));
+					stmt.setString(5, getTagValue("INDUTY_CD_NM", eElement));
+					stmt.setString(6, getTagValue("APPN_CANCL_DT", eElement));
 					
 					stmt.executeUpdate();
 					//System.out.println("sucess to save");
