@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="health_functional_food.WebPageVO" %>
 <!DOCTYPE html>
@@ -12,12 +12,14 @@
 	<h4>건강 기능 식품 검색</h4>
 	<p>원료 혹은 회사를 검색하세요.</p>
 	<% WebPageVO vo = new WebPageVO(); %>
-	<p>
+	<form action='itemShow.jsp' method='get'>
 	  원료검색 <input type="text" name = "itemName" style = "width:200px" id="itemName"></input>
-	  <button type = "submit" onclick="location.href='itemShow.jsp'">검색</button>
+	  <input type='submit' value="검색"></input>
+	</form>
 	  <br>
+	<form action='companyShow.jsp' method='get'>
 	  회사검색 <input type="text" name="companyName" style = "width:200px" id="companyName"></input>
-	  <button type = "submit" onclick="location.href='companyShow.jsp'">검색</button>
-	</p>
+	  <input type='submit' value="검색"></input>
+	</form>
 </body>
 </html>

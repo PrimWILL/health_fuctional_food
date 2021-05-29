@@ -1,12 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>�Ǳ�ĺ�</title>
+<meta charset="UTF-8">
+<title>건기식보</title>
 </head>
 <body>
-	<p>companyShow</p>
+  <h1>건기식보</h1>
+  <h4>회사 검색 결과</h4>
+   <%
+     String companyName = request.getParameter("companyName");
+   %>
 </body>
 </html>
