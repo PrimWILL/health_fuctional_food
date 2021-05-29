@@ -163,7 +163,7 @@ public class Parsing {
 		try {
 			//System.out.println("run()!!!");
 		
-			String url = "http://openapi.foodsafetykorea.go.kr/api/384fb31b44854692a1aa/"+serviceName+"/xml/1/5";
+			String url = "http://openapi.foodsafetykorea.go.kr/api/384fb31b44854692a1aa/"+serviceName+"/xml/1/1000";
 		    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		    DocumentBuilder db = dbf.newDocumentBuilder();
 		    

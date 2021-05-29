@@ -10,8 +10,11 @@
 <title>건기식보</title>
 </head>
 <body>
-  <h1>건기식보</h1>
+  <h1 id = "top">건기식보</h1>
   <h4>원료 검색 결과</h4>
+  <form action='index.jsp'>
+	  <input type='submit' value="다시 검색하기"></input>
+   </form>
    <%
    
    String itemName = request.getParameter("itemName");
@@ -43,8 +46,9 @@
 	out.print("<th>단위</th>");
 	out.print("<th>일일섭취량 하한</th>");
 	
-	String temp = "";
+	boolean cp = false;
 	while(r.next()) {
+		cp = true;
 		out.print("<tr>");
 		out.print("<td>"+r.getString(1)+"</td>");
 		out.print("<td>"+r.getString(2)+"</td>");
@@ -57,11 +61,13 @@
 		out.print("</tr>");
 	}
 	out.print("</table>");
+	
+	if (cp == false) {
+		out.print("검색 결과가 없습니다. 다시 검색하세요.");
+	}
    %>
    <br/>
    <br/>
-   <form action='index.jsp'>
-	  <input type='submit' value="다시 검색하기"></input>
-   </form>
+   <button type="button" onclick="location.href='#top'">위로 올라가기</button>
 </body>
 </html>
