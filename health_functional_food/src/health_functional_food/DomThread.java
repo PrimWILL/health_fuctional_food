@@ -101,9 +101,9 @@ public class DomThread extends Thread{
 			conn.close();
 			Search search = new Search();
 			search.init();
-			input = "√ﬂ√‚π∞";
+			input = "#";
 			
-			System.out.println(search.food(input));
+			System.out.println(search.regist(input));
 			//search.regist(input, p, conn, r);
 			//search.food(input, p, conn, r);
 			
