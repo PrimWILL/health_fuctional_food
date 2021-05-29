@@ -50,7 +50,7 @@ public class Parsing {
 	public void Item(NodeList list, Connection conn) {
 
 		try {
-			String sql = "insert into Item values(?,?,?,?,?,?,?)";
+			String sql = "insert into Item values(?,?,?,?,?,?)";
 
 			for(int i = 0; i<list.getLength(); i++) {
 				System.out.println(i);
@@ -60,11 +60,10 @@ public class Parsing {
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setString(1, getTagValue("INTK_UNIT", eElement));
 					stmt.setString(2, getTagValue("IFTKN_ATNT_MATR_CN", eElement));
-					stmt.setDouble(3, Double.parseDouble(getTagValue("DAY_INTK_HIGHLIMIT", eElement)));
+					stmt.setString(3, getTagValue("DAY_INTK_HIGHLIMIT", eElement));
 					stmt.setString(4, getTagValue("PRDCT_NM", eElement));
-					stmt.setDouble(5, Double.parseDouble(getTagValue("DAY_INTK_LOWLIMIT", eElement)));
+					stmt.setString(5, getTagValue("DAY_INTK_LOWLIMIT", eElement));
 					stmt.setString(6, getTagValue("PRIMARY_FNCLTY", eElement));
-					stmt.setString(7, getTagValue("INTK_MEMO", eElement));
 					
 					stmt.executeUpdate();
 					//System.out.println("sucess to save");
@@ -80,7 +79,7 @@ public class Parsing {
 	public void Gmp(NodeList list, Connection conn) {
 
 		try {
-			String sql = "insert into Gmp values(?,?,?,?,?,?)";
+			String sql = "insert into Gmp values(?,?,?,?,?)";
 
 			for(int i = 0; i<list.getLength(); i++) {
 				System.out.println(i);
@@ -92,8 +91,7 @@ public class Parsing {
 					stmt.setLong(2, Long.parseLong(getTagValue("LCNS_NO", eElement)));
 					stmt.setLong(3, Integer.parseInt(getTagValue("GMP_APPN_NO", eElement)));
 					stmt.setString(4, getTagValue("PRSDNT_NM", eElement));
-					stmt.setString(5, getTagValue("INDUTY_CD_NM", eElement));
-					stmt.setString(6, getTagValue("APPN_CANCL_DT", eElement));
+					stmt.setString(5, getTagValue("APPN_CANCL_DT", eElement));
 					
 					stmt.executeUpdate();
 					//System.out.println("sucess to save");
@@ -111,7 +109,7 @@ public class Parsing {
 	public void Retail(NodeList list, Connection conn) {
 		
 		try {
-			String sql = "insert into Retail values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into Retail values(?,?,?,?,?,?,?)";
 
 			for(int i = 0; i<list.getLength(); i++) {
 				System.out.println(i);
@@ -124,9 +122,8 @@ public class Parsing {
 					stmt.setString(3, getTagValue("TELNO", eElement));
 					stmt.setLong(4, Long.parseLong(getTagValue("LCNS_NO", eElement)));
 					stmt.setString(5, getTagValue("PRSDNT_NM", eElement));
-					stmt.setString(6, getTagValue("INDUTY_NM", eElement));
-					stmt.setString(7, getTagValue("INSTT_NM", eElement));
-					stmt.setString(8, getTagValue("LOCP_ADDR", eElement));
+					stmt.setString(6, getTagValue("INSTT_NM", eElement));
+					stmt.setString(7, getTagValue("LOCP_ADDR", eElement));
 					stmt.executeUpdate();
 					//System.out.println("sucess to save");
 				}
