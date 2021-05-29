@@ -19,7 +19,7 @@ public class Parsing {
 	public void Acknowledgment(NodeList list, Connection conn) {
 
 		try {
-			String sql = "insert into Acknowledgment values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into Acknowledgment values(?,?,?,?,?,?,?)";
 
 			for(int i = 0; i<list.getLength(); i++) {
 				System.out.println(i);
@@ -31,10 +31,9 @@ public class Parsing {
 					stmt.setString(2, getTagValue("APLC_RAWMTRL_NM", eElement));
 					stmt.setString(3, getTagValue("HF_FNCLTY_MTRAL_RCOGN_NO", eElement));
 					stmt.setString(4, getTagValue("IFTKN_ATNT_MATR_CN", eElement));
-					stmt.setString(5, getTagValue("INDUTY_NM", eElement));
-					stmt.setString(6, getTagValue("ADDR", eElement));
-					stmt.setString(7, getTagValue("FNCLTY_CN", eElement));
-					stmt.setString(8, getTagValue("DAY_INTK_CN", eElement));
+					stmt.setString(5, getTagValue("ADDR", eElement));
+					stmt.setString(6, getTagValue("FNCLTY_CN", eElement));
+					stmt.setString(7, getTagValue("DAY_INTK_CN", eElement));
 					
 					stmt.executeUpdate();
 					//System.out.println("sucess to save");
