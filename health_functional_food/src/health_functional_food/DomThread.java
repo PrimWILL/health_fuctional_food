@@ -50,7 +50,7 @@ public class DomThread extends Thread{
 			System.out.println("< < Creating Acknowledgment, Item, Retail, Gmp relations > >");
 			// 4개 테잉블 생성 : Create table문 이용
 
-
+			// commit!
 			stm = conn.createStatement();
 			// table 생성문 보고서에 수정 필요!
 			String create = "create table Acknowledgment(BSSH_NM varchar(20), PRDCT_NM varchar(200), HF_FNCLTY_MTRAL_RCOGN_NO varchar(20), IFTKN_ATNT_MATR_CN varchar(100), INDUTY_NM varchar(15), ADDR varchar(100), PRIMARY_FNCLTY varchar(300), DAY_INTK_HIGHLIMIT varchar(30));\r\n"
