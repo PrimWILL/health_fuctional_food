@@ -99,11 +99,11 @@ public class DomThread extends Thread{
 
 			// 넣고자 하는것을 input이라고 두고
 			conn.close();
-			//Search search = new Search();
-			//search.init();
-			//input = "#";
+			Search search = new Search();
+			search.init();
+			input = "추출물";
 			
-			//System.out.println(search.regist(input));
+			System.out.println(search.food(input));
 			//search.regist(input, p, conn, r);
 			//search.food(input, p, conn, r);
 			
