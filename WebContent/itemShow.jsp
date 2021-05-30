@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="health_functional_food.DomThread" %>
-<%@page import="health_functional_food.Search" %>
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +23,6 @@
 	Connection conn = null;
    
    String query;
-   Search search = new Search();
    String connectionUrl = "jdbc:postgresql:health_functional_food";
 	String user = "postgres";
 	String password = "1234";

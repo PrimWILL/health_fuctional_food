@@ -19,8 +19,8 @@
 	  <br>
 	<form action='companyShow.jsp' method='get'>
 	  회사검색 <input type="text" name="companyName" style = "width:200px" id="companyName"></input>
-	  <input type='checkbox' name="gmp" value="gmp">GMP지정여부</input>
-  	  <input type='checkbox' name='retail' value='retail'>건강기능식품판매업 등록 여부</input>
+	  <input type='checkbox' name="gmp" value="gmp" checked>GMP지정여부</input>
+  	  <input type='checkbox' name='retail' value='retail' checked>건강기능식품판매업 등록 여부</input>
 	  <input type='submit' value="검색"></input>
 	</form>
 </body>
