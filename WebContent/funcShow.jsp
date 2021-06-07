@@ -10,13 +10,13 @@
 </head>
 <body>
   <h1 id = "top">건기식보</h1>
-  <h4>원료 검색 결과</h4>
+  <h4>기능성 검색 결과</h4>
   <form action='index.jsp'>
 	  <input type='submit' value="다시 검색하기"></input>
    </form>
    <%
    
-   String itemName = request.getParameter("itemName");
+   String funcName = request.getParameter("funcName");
    
    PreparedStatement p=null;
 	ResultSet r = null;
@@ -28,12 +28,12 @@
 	String password = "1234";
 
 	conn = DriverManager.getConnection(connectionUrl, user, password);  
-   query = "select * from acknowledgment natural full outer join item where prdct_nm like '%"+itemName+"%';";
+   query = "select * from acknowledgment natural full outer join item where primary_fnclty like '%"+funcName+"%';";
 	
 	p = conn.prepareStatement(query);
 	r = p.executeQuery();
 	
-	out.print("<p>다음은 '" + itemName + "' 에 대한 검색 결과입니다.</p>");
+	out.print("<p>다음은 '" + funcName + "' 키워드가 포함된 기능성에 대한 검색 결과입니다.</p>");
 	out.print("<table border='1'>");
 	out.print("<th>품목명</th>");
 	out.print("<th>섭취시 주의사항</th>");
