@@ -84,7 +84,8 @@ public class DomThread extends Thread{
 
 			System.out.println("< < Insert ¿Ï·á > >");
 
-			
+			String ackItemView = "create view AckItem as (select * from acknowledgment natural full outer join item);";
+			stm.executeUpdate(ackItemView);
 			
 			conn.close();
 			

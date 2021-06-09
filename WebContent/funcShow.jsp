@@ -3,7 +3,6 @@
 <%@page import="health_functional_food.DomThread" %>
 <%@page import="java.sql.*" %>
 <%@page import="java.util.ArrayList" %>
-<%@page import="java.util.Iterator" %>
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +40,7 @@
 	String password = "1234";
 
 	conn = DriverManager.getConnection(connectionUrl, user, password);  
-   query = "select * from acknowledgment natural full outer join item where primary_fnclty like '%"+funcName+"%';";
+   query = "select * from AckItem where primary_fnclty like '%"+funcName+"%';";
 	
 	p = conn.prepareStatement(query);
 	r = p.executeQuery();
@@ -91,8 +90,6 @@
 		table.add(9);
 		out.print("<th>일일섭취량 하한</th>");
 	}
-	
-	System.out.println(table);
 	
 	boolean cp = false;
 	while(r.next()) {
