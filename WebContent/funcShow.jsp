@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@page import="health_functional_food.DomThread" %>
 <%@page import="java.sql.*" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.Iterator" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +20,16 @@
    <%
    
    String funcName = request.getParameter("funcName");
+   
+   String funcNotice = request.getParameter("funcNotice");
+   String funcMainFunc = request.getParameter("funcMainFunc");
+   String funcDayHigh = request.getParameter("funcDayHigh");
+   String funcCompanyName = request.getParameter("funcCompanyName");
+   String funcAdmitNum = request.getParameter("funcAdmitNum");
+   String funcAddr = request.getParameter("funcAddr");
+   String funcUnit = request.getParameter("funcUnit");
+   String funcDayLow = request.getParameter("funcDayLow");
+   
    
    PreparedStatement p=null;
 	ResultSet r = null;
@@ -36,31 +49,62 @@
 	out.print("<p>다음은 '" + funcName + "' 키워드가 포함된 기능성에 대한 검색 결과입니다.</p>");
 	out.print("<table border='1'>");
 	out.print("<th>품목명</th>");
-	out.print("<th>섭취시 주의사항</th>");
-	out.print("<th>주된 기능성</th>");
-	out.print("<th>일일섭취량 상한</th>");
-	out.print("<th>업체명</th>");
-	out.print("<th>인정번호</th>");
-	out.print("<th>주소</th>");
-	out.print("<th>단위</th>");
-	out.print("<th>일일섭취량 하한</th>");
+	
+	ArrayList<Integer> table = new ArrayList<>();
+	table.add(1);
+	if (funcNotice != null && funcNotice.compareTo("funcNotice") == 0) {
+		table.add(2);
+		out.print("<th>섭취시 주의사항</th>");
+	}
+	
+	if (funcMainFunc != null && funcMainFunc.compareTo("funcMainFunc") == 0) {
+		table.add(3);
+		out.print("<th>주된 기능성</th>");
+	}
+	
+	if (funcDayHigh != null && funcDayHigh.compareTo("funcDayHigh") == 0) {
+		table.add(4);
+		out.print("<th>일일섭취량 상한</th>");
+	}
+	
+	if (funcCompanyName != null && funcCompanyName.compareTo("funcCompanyName") == 0) {
+		table.add(5);
+		out.print("<th>업체명</th>");
+	}
+	
+	if (funcAdmitNum != null && funcAdmitNum.compareTo("funcAdmitNum") == 0) {
+		table.add(6);
+		out.print("<th>인정번호</th>");
+	}
+	
+	if (funcAddr != null && funcAddr.compareTo("funcAddr") == 0) {
+		table.add(7);
+		out.print("<th>주소</th>");
+	}
+	
+	if (funcUnit != null && funcUnit.compareTo("funcUnit") == 0) {
+		table.add(8);
+		out.print("<th>단위</th>");
+	}
+	
+	if (funcDayLow != null && funcDayLow.compareTo("funcDayLow") == 0) {
+		table.add(9);
+		out.print("<th>일일섭취량 하한</th>");
+	}
+	
+	System.out.println(table);
 	
 	boolean cp = false;
 	while(r.next()) {
 		cp = true;
 		out.print("<tr>");
-		out.print("<td>"+r.getString(1)+"</td>");
-		out.print("<td>"+r.getString(2)+"</td>");
-		out.print("<td>"+r.getString(3)+"</td>");
-		out.print("<td>"+r.getString(4)+"</td>");
-		out.print("<td>"+r.getString(5)+"</td>");
-		out.print("<td>"+r.getString(6)+"</td>");
-		out.print("<td>"+r.getString(7)+"</td>");
-		out.print("<td>"+r.getString(8)+"</td>");
-		out.print("<td>"+r.getString(9)+"</td>");
+		for (int i = 0; i < table.size(); i++) {
+			int value = table.get(i);			
+			out.print("<td>"+r.getString(value)+"</td>");
+		}
 		out.print("</tr>");
 	}
-	out.print("</table>");
+	out.print("</table><br/><br/>");
 	
 	if (cp == false) {
 		out.print("검색 결과가 없습니다. 다시 검색하세요.");
