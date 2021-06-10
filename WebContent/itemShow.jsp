@@ -111,18 +111,16 @@
 		r = p.executeQuery();
 		if (r.next()) {
 			query = "update Ranking set SEARCH_CNT=SEARCH_CNT+1 where PRDCT_NM = '"+itemName+"';";
-			System.out.println("B");
 			p = conn.prepareStatement(query);
 			p.executeUpdate();
 		}
 		else {
 			query = "insert into Ranking values ('"+itemName+"', 1);";
-			System.out.println("A");
 			p = conn.prepareStatement(query);
 			p.executeUpdate();
 		}
+		conn.close();
 	}
-	conn.close();
    %>
    <br/>
    <br/>

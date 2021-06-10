@@ -106,6 +106,23 @@
 	if (cp == false) {
 		out.print("검색 결과가 없습니다. 다시 검색하세요.");
 	}
+	else {
+		query = "select * from Ranking where PRDCT_NM = '"+funcName+"';";
+		
+		p = conn.prepareStatement(query);
+		r = p.executeQuery();
+		if (r.next()) {
+			query = "update Ranking set SEARCH_CNT=SEARCH_CNT+1 where PRDCT_NM = '"+funcName+"';";
+			p = conn.prepareStatement(query);
+			p.executeUpdate();
+		}
+		else {
+			query = "insert into Ranking values ('"+funcName+"', 1);";
+			p = conn.prepareStatement(query);
+			p.executeUpdate();
+		}
+		conn.close();
+	}
    %>
    <br/>
    <br/>

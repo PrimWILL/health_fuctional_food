@@ -48,5 +48,10 @@
   	  <input type='checkbox' name='retail' value='retail' checked>건강기능식품판매업 등록 여부</input>
 	  <input type='submit' value="검색"></input>
 	</form>
+	<form action='hotRanking.jsp' method='get'>
+	  <br/>
+	  <b>인기 검색어</b> <br/>
+	  <input type='submit' value="검색"></input>
+	</form>
 </body>
 </html>

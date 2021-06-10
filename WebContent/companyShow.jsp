@@ -28,7 +28,11 @@
    String connectionUrl = "jdbc:postgresql:health_functional_food";
 	String user = "postgres";
 	String password = "1234";
-
+	
+	boolean check = false;
+	if (gmpCheck == null && retailCheck == null) {
+		out.print("검색 결과가 없습니다. 다시 검색하세요.");
+	}
 	if (gmpCheck != null && gmpCheck.compareTo("gmp") == 0) {
 		conn = DriverManager.getConnection(connectionUrl, user, password);  
 	    query = "select * from Gmp where BSSH_NM like '%"+companyName+"%';";
@@ -59,6 +63,8 @@
 		if (cp == false) {
 			out.print("검색 결과가 없습니다. 다시 검색하세요.");
 		}
+		else
+			check = true;
 	}
 	
 	if (retailCheck != null && retailCheck.compareTo("retail") == 0) {
@@ -95,8 +101,28 @@
 		if (cp == false) {
 			out.print("검색 결과가 없습니다. 다시 검색하세요.");
 		}
+		else {
+			check = true;
+		}
 	}
 	
+	if (check) {
+		query = "select * from Ranking where PRDCT_NM = '"+companyName+"';";
+		
+		p = conn.prepareStatement(query);
+		r = p.executeQuery();
+		if (r.next()) {
+			query = "update Ranking set SEARCH_CNT=SEARCH_CNT+1 where PRDCT_NM = '"+companyName+"';";
+			p = conn.prepareStatement(query);
+			p.executeUpdate();
+		}
+		else {
+			query = "insert into Ranking values ('"+companyName+"', 1);";
+			p = conn.prepareStatement(query);
+			p.executeUpdate();
+		}
+		conn.close();
+	}
    %>
    <br/>
    <br/>
