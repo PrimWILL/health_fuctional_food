@@ -16,7 +16,7 @@ import java.sql.*;
 import java.io.*;
 
 
-public class DomThread extends Thread{
+public class MainApp extends Thread{
 	
 	private String xml;
 	static String input=null;
@@ -93,22 +93,7 @@ public class DomThread extends Thread{
 			String rankingCreate="create table Ranking(PRDCT_NM varchar(70), SEARCH_CNT integer);\r\n";
 			stm.executeUpdate(rankingCreate);
 			System.out.println("\n< <Ranking Table Create> >\n");
-			
-			/*
-			String rankingShow="select rank() over(order by VIEWS desc) as RANK , * from Ranking limit 10;\r\n";
-			ResultSet resultRanking=stm.executeQuery(rankingShow); 
-			System.out.println("RANK    PRDCT_NM                VIEWS");
-			
-			while(resultRanking.next()) 
-			{
-				String rank=resultRanking.getString("RANK");
-				String prdct_nm=resultRanking.getString("PRDCT_NM");
-				String views=resultRanking.getString("VIEWS");
 				
-				System.out.println(rank+"\t"+prdct_nm+"\t\t\t"+views);  
-			}*/
-			
-			
 			conn.close();
 			
 		} catch(SQLException ex) {
