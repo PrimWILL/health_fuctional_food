@@ -104,6 +104,26 @@
 	if (cp == false) {
 		out.print("검색 결과가 없습니다. 다시 검색하세요.");
 	}
+	else {
+		query = "select PRDCT_NM from AckItem where PRDCT_NM = '"+itemName+"';";
+		
+		p = conn.prepareStatement(query);
+		r = p.executeQuery();
+		
+		if (r.getString(1) == null) {
+			query = "insert into Ranking values ('"+itemName+"', 1);";
+			
+			p = conn.prepareStatement(query);
+			p.executeUpdate();
+		}
+		else {
+			query = "update Ranking set SEARCH_CNT=SEARCH_CNT+1 where PRDCT_NM = '"+itemName+"';";
+			
+			p = conn.prepareStatement(query);
+			p.executeUpdate();
+		}
+	}
+	conn.close();
    %>
    <br/>
    <br/>
