@@ -87,8 +87,6 @@ public class MainApp extends Thread{
 			String ackItemView = "create view AckItem as (select * from acknowledgment natural full outer join item);";
 			stm.executeUpdate(ackItemView);
 			
-			
-			
 			// create ranking table
 			String rankingCreate="create table Ranking(PRDCT_NM varchar(70), SEARCH_CNT integer);\r\n";
 			stm.executeUpdate(rankingCreate);

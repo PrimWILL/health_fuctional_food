@@ -12,7 +12,7 @@
   <h1 id = "top">건기식보</h1>
   <h4>인기 검색어</h4>
   <form action='index.jsp'>
-	  <input type='submit' value="다시 검색하기"></input>
+	  <input type='submit' value="메인화면으로 돌아가기"></input>
    </form>
    <%
    PreparedStatement p=null;

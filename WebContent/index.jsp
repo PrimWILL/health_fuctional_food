@@ -50,8 +50,7 @@
 	</form>
 	<form action='hotRanking.jsp' method='get'>
 	  <br/>
-	  <b>인기 검색어</b> <br/>
-	  <input type='submit' value="검색"></input>
+	  <input type='submit' value="인기 검색어 보기"></input>
 	</form>
 </body>
 </html>
