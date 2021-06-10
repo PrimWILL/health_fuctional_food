@@ -25,7 +25,9 @@
    String password = "1234";
 
 	conn = DriverManager.getConnection(connectionUrl, user, password);  
-   query = "select * from AckItem where prdct_nm like '%"+itemName+"%';";
+    query = "select * from Ranking order by SEARCH_CNT desc limit 10;";
+    
+    
    %>
    <button type="button" onclick="location.href='#top'">위로 올라가기</button>
 </body>
